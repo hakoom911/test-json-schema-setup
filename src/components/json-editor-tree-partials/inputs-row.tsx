@@ -15,13 +15,8 @@ type Props = {};
 
 export default function InputsRow({}: Props) {
   return (
-    // <div className='flex w-full justify-center items-center space-x-2 '>
-    //     <Input name='key' placeholder='key'/>
-    // </div>
     <div className="flex items-center justify-center space-x-2 p-2">
-      {/* Checkbox */}
 
-      {/* Select Input */}
       <div className="relative">
         <Select>
           <SelectTrigger className="w-[180px]">
@@ -46,22 +41,18 @@ export default function InputsRow({}: Props) {
         </div>
       </div>
 
-      {/* Title Input */}
       <Input
         className="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
         placeholder="Title"
       />
 
-      {/* Description Input */}
       <Input
         className="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
         placeholder="Description"
       />
 
-      {/* Add and Remove Icons */}
       <div className="flex space-x-2">
         <Button className="text-green-600 hover:text-green-800">
-          {/* Add Icon */}
           <svg
             className="h-6 w-6"
             fill="currentColor"
@@ -76,7 +67,6 @@ export default function InputsRow({}: Props) {
           </svg>
         </Button>
         <Button className="text-red-600 hover:text-red-800">
-          {/* Remove Icon */}
           <svg
             className="h-6 w-6"
             fill="currentColor"
