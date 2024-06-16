@@ -117,6 +117,8 @@ const JsonSchemaEditor: React.FC = () => {
 
   const renderTree = (node: SchemaNode, path: string[] = []) => {
     const currentKey = path[path.length - 1] || "root";
+    console.log(`current path :${currentPath}`)
+    console.log(`current key :${currentKey}`)
     const isRoot = path.length === 0;
     const isObject = node.type === "object";
     const isArray = node.type === "array";
@@ -184,11 +186,6 @@ const JsonSchemaEditor: React.FC = () => {
                 <Delete />
               </IconButton>
             )}
-            {/* {isRoot && (
-              <IconButton onClick={() => handleAddField([], "child")}>
-                <Add />
-              </IconButton>
-            )} */}
           </Grid>
         </Grid>
         {isObject &&
@@ -203,9 +200,11 @@ const JsonSchemaEditor: React.FC = () => {
 
   return (
     <div className="flex w-full">
-      <div className="w-full p-4 bg-slate-800">
+      <div className="w-full p-4 bg-slate-800 text-white">
         <JSONTree data={schema} />
+        {json}
       </div>
+    
       <div className="w-full p-4">
         <Typography variant="h4">JSON Schema Editor</Typography>
         {renderTree(schema)}

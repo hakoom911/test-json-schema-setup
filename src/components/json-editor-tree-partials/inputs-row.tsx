@@ -52,7 +52,7 @@ export default function InputsRow({}: Props) {
       />
 
       <div className="flex space-x-2">
-        <Button className="text-green-600 hover:text-green-800">
+        <Button className="text-green-600 hover:text-green-800" asChild>
           <svg
             className="h-6 w-6"
             fill="currentColor"
@@ -66,7 +66,7 @@ export default function InputsRow({}: Props) {
             />
           </svg>
         </Button>
-        <Button className="text-red-600 hover:text-red-800">
+        <Button className="text-red-600 hover:text-red-800" asChild >
           <svg
             className="h-6 w-6"
             fill="currentColor"

@@ -1,8 +1,6 @@
 import {
   Tree,
   TreeViewElement,
-  File,
-  Folder,
   Node,
   CollapseButton,
   Leaf,
