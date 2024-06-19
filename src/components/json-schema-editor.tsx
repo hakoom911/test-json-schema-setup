@@ -64,27 +64,42 @@ const JsonSchemaEditor: React.FC = () => {
     handleCloseMenu();
   };
 
-  const handleDeleteNode = (path: string[]) => {
-    const newSchema = { ...schema };
-    const node = findNode(newSchema, path.slice(0, -1));
-    delete node.properties![path[path.length - 1]];
-    setSchema(newSchema);
-    updateJson(newSchema);
+  const handleDeleteNode = (nodePath: string[]) => {
+    const updatedSchema = { ...schema };
+    const { properties } = findNode(updatedSchema, nodePath.slice(0, -1));
+    const deletedKey = nodePath[nodePath.length - 1];
+    delete properties![deletedKey];
+    setSchema(updatedSchema);
+    updateJson(updatedSchema);
   };
 
+
   const handleKeyChange = useCallback(
-    (path: string[], oldKey: string, newKey: string) => {
-      const newSchema = { ...schema };
-      const node = findNode(newSchema, path.slice(0, -1));
-      if (node.properties && node.properties[oldKey]) {
-        const field = node.properties[oldKey];
-        delete node.properties[oldKey];
-        node.properties[newKey] = field;
-        setSchema(newSchema);
-        updateJson(newSchema);
-      }
+    (path: string[], oldKey: string, newKey: string): void => {
+      setSchema((prevSchema) => {
+        const newSchema = { ...prevSchema };
+        const node = findNode(newSchema, path.slice(0, -1));
+        if (node.properties && node.properties[oldKey]) {
+          const field = node.properties[oldKey];
+          delete node.properties[oldKey];
+          node.properties[newKey] = field;
+        }
+        return newSchema;
+      });
+      updateJson(schema);
     },
-    [schema]
+    // (path: string[], oldKey: string, newKey: string) => {
+    //   const newSchema = { ...schema };
+    //   const node = findNode(newSchema, path.slice(0, -1));
+    //   if (node.properties && node.properties[oldKey]) {
+    //     const field = node.properties[oldKey];
+    //     delete node.properties[oldKey];
+    //     node.properties[newKey] = field;
+    //     setSchema(newSchema);
+    //     updateJson(newSchema);
+    //   }
+    // },
+    []
   );
 
   const handleFieldChange = (
